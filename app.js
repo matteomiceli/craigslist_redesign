@@ -4,6 +4,8 @@ const express = require('express');
 const app = express();
 const port = 8080;
 
+
+// Auth0 config
 const config = {
   authRequired: false,
   auth0Logout: true,
@@ -13,9 +15,12 @@ const config = {
   secret: process.env.AUTH_CLIENT_SECRET
 };
 
+
 // Middleware
 app.use(auth(config));
+app.use(express.json());
 
+// Views engine
 app.set('view engine', 'ejs');
 
 
